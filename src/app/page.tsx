@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Check, Leaf, MapPin, Phone, Ruler, Send, Shirt, Sparkles, Truck } from "lucide-react";
 import colors from "@/assets/trousers-colors.jpg";
 import denim from "@/assets/trousers-denim.jpg";
+import socks from "@/assets/hempko-socks.png";
 import rack from "@/assets/trousers-rack.jpg";
 import textured from "@/assets/trousers-textured.jpg";
 import waistband from "@/assets/trousers-waistband.jpg";
@@ -29,6 +30,12 @@ const details = [
   { icon: Truck, label: "Delivery", value: "All over Nepal" },
   { icon: Ruler, label: "Sizes", value: "M, L, XL" },
   { icon: Check, label: "Price", value: "Rs. 1399" },
+];
+
+const socksDetails = [
+  { icon: Truck, label: "Delivery", value: "All over Nepal" },
+  { icon: Ruler, label: "Fit", value: "Ask for sizes" },
+  { icon: Check, label: "Order", value: "WhatsApp inquiry" },
 ];
 
 const gallery: Array<{ src: StaticImageData; alt: string; className?: string }> = [
@@ -103,15 +110,15 @@ export default function Home() {
         <div className="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Shop</p>
-            <h2 className="mt-2 text-4xl font-semibold sm:text-5xl">Hempko relaxed trousers</h2>
+            <h2 className="mt-2 text-4xl font-semibold sm:text-5xl">Hempko essentials</h2>
           </div>
           <p className="max-w-md text-sm leading-7 text-muted-foreground">
-            One easy essential, available in wearable tones. Soft texture, adjustable comfort,
-            and enough polish for everyday use.
+            Breathable hemp-cotton pieces for everyday comfort. Start with relaxed trousers,
+            then ask about socks availability, size, and delivery.
           </p>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
+        <div className="grid gap-6 lg:grid-cols-2">
           <div className="rounded-lg border border-border bg-cream p-6">
             <Image
               src={waistband}
@@ -130,20 +137,59 @@ export default function Home() {
                 </div>
               ))}
             </div>
+            <a
+              href="https://wa.me/9779709139565"
+              className="mt-6 inline-flex h-11 w-full items-center justify-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
+            >
+              Order trousers
+            </a>
           </div>
 
-          <div className="grid auto-rows-[260px] gap-4 md:grid-cols-2">
-            {gallery.map((item) => (
-              <div key={item.alt} className={item.className}>
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  placeholder="blur"
-                  className="h-full w-full rounded-lg object-cover"
-                />
+          <div className="rounded-lg border border-border bg-cream p-6">
+            <Image
+              src={socks}
+              alt="Hempko socks"
+              placeholder="blur"
+              className="aspect-[4/5] w-full rounded-lg object-cover"
+            />
+            <div className="mt-6">
+              <h3 className="text-3xl font-semibold">Hempko socks</h3>
+              <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                Soft natural comfort for daily wear. Message Hempko to confirm available
+                colors, sizes, and delivery details.
+              </p>
+              <div className="mt-6 space-y-4">
+                {socksDetails.map(({ icon: Icon, label, value }) => (
+                  <div key={label} className="flex items-center justify-between border-b border-border/70 pb-4 last:border-0 last:pb-0">
+                    <span className="inline-flex items-center gap-3 text-sm font-medium text-muted-foreground">
+                      <Icon className="h-4 w-4 text-primary" />
+                      {label}
+                    </span>
+                    <span className="text-sm font-semibold">{value}</span>
+                  </div>
+                ))}
               </div>
-            ))}
+              <a
+                href="https://wa.me/9779709139565"
+                className="mt-6 inline-flex h-11 w-full items-center justify-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
+              >
+                Ask about socks
+              </a>
+            </div>
           </div>
+        </div>
+
+        <div className="mt-6 grid auto-rows-[260px] gap-4 md:grid-cols-2">
+          {gallery.map((item) => (
+            <div key={item.alt} className={item.className}>
+              <Image
+                src={item.src}
+                alt={item.alt}
+                placeholder="blur"
+                className="h-full w-full rounded-lg object-cover"
+              />
+            </div>
+          ))}
         </div>
       </section>
 
